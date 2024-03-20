@@ -20,7 +20,7 @@ downloaded as a properly formatted JSON file without losing any information.
 These features together provide a user-friendly platform for accessing and managing patient
 data, demonstrating the application's utility in healthcare data management contexts.
 # Section 2: Design and Programming Process
-## Designing Classes
+# Designing Classes
 The application is built on a foundation of well-thought-out classes, each serving a distinct
 role in managing patient data:
 • DataLoader: Responsible for reading patient data from CSV files and initializing
@@ -35,7 +35,7 @@ feature with its static toJSON(DataFrame dataframe) function.
 These classes are designed with the principles of cohesion, encapsulation, and abstraction in
 mind. For instance, the DataLoader class abstracts away the complexities of CSV parsing,
 while the DataFrame provides a flexible structure for representing tabular data.
-## Use of Model-View-Controller (MVC):
+# Use of Model-View-Controller (MVC):
 • Model: Utilizes DataFrame class to perform different tasks on the data. It is used by
 Servlets to make the required changes to data.
 o Model.java Class: Contains functions that uses DataFrame functions.
