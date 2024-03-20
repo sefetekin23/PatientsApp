@@ -1,4 +1,6 @@
 <div class="links">
-  <p>The footer</p>
+  <footer>
+    <p>Servet Efe Tekin &copy; 2024. All Rights Reserved.</p>
+  </footer>
   <div class="clearBoth"></div>
 </div>

@@ -16,20 +16,14 @@ import java.util.List;
 // The servlet invoked to perform a search.
 // The url http://localhost:8080/runsearch.html is mapped to calling doPost on the servlet object.
 // The servlet object is created automatically, you just provide the class.
-@WebServlet("/runsearch.html")
+@WebServlet("/search.html")
 public class SearchServlet extends HttpServlet
 {
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-  {
-    // Use the model to do the search and put the results into the request object sent to the
-    // Java Server Page used to display the results.
-    Model model = ModelFactory.getModel();
-    List<String> searchResult = model.searchFor(request.getParameter("searchstring"));
-    request.setAttribute("result", searchResult);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
 
-    // Invoke the JSP page.
-    ServletContext context = getServletContext();
-    RequestDispatcher dispatch = context.getRequestDispatcher("/searchResult.jsp");
-    dispatch.forward(request, response);
-  }
+        ServletContext context = getServletContext();
+        RequestDispatcher dispatch = context.getRequestDispatcher("/search.jsp");
+        dispatch.forward(request, response);
+    }
 }

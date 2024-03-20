@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
+  <jsp:include page="/meta.jsp"/>
   <title>Patient Data App</title>
   <link rel="stylesheet" href="patientList.css">
 
@@ -38,7 +38,7 @@
       {
         String href = "patientInfo.html?patientID=" + ID.get(i);
     %>
-    <li><a href="<%=href%>"><%=patients.get(i) + ": "+sortInfo.get(i)%></a> </li>
+    <li><a href="<%=href%>"><%=patients.get(i) + ": "+sortInfo.get(i)%></a></li>
     <% } %>
   </ul>
 </div>
