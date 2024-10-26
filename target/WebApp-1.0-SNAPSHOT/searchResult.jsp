@@ -3,7 +3,6 @@
 
 <html>
 <head>
-  <jsp:include page="/meta.jsp"/>
   <title>Patient Data App</title>
   <link rel="stylesheet" href="searchResult.css">
 
@@ -11,6 +10,12 @@
 <body>
 <jsp:include page="/header.jsp"/>
 <div class="main">
+  <h1>Search</h1>
+  <form method="POST" action="/searchResult.html">
+    <input type="text" name="searchstring" placeholder="Enter search keyword here"/>
+    <input type="submit" value="Search"/>
+  </form>
+
   <h1>Search Result</h1>
   <%
     List<String> searchResults = (List<String>) request.getAttribute("result");

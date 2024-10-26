@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <jsp:include page="/meta.jsp"/>
+
     <title>Patient Data App</title>
     <link rel="stylesheet" href="patientInfo.css">
     <script>

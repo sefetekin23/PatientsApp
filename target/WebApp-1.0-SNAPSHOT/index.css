@@ -3,7 +3,7 @@
 }
 
 /* Reset some default styles */
-body, h2, nav, ul, li, a {
+body, h2,h3,h4 nav, ul, li, a,form {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -20,10 +20,15 @@ body {
 }
 
 /* Center the h2 heading and give it a color */
-h2 {
+h2,h4 {
   text-align: center;
   color: #0d6efd; /* Bootstrap primary blue */
 }
+h3 {
+  color: #0d6efd; /* Bootstrap primary blue */
+}
+
+
 
 /* Style the navigation */
 nav {
@@ -43,10 +48,14 @@ nav ul {
 /* Style each list item */
 nav li {
   margin: 0 10px;
+  display: inline-flex;
 }
-
+nav form input[type="submit"]
+{
+  height: 100%;
+}
 /* Style the anchor tags as buttons */
-nav a {
+nav a,nav form input[type="submit"]{
   background: #0d6efd; /* Bootstrap primary blue */
   color: #fff;
   padding: 10px 15px;
@@ -59,7 +68,7 @@ nav a {
 }
 
 /* Hover effect for buttons */
-nav a:hover {
+nav a:hover,nav form input[type="submit"]:hover {
   background: #0056b3; /* A darker blue */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -67,7 +76,7 @@ nav a:hover {
 }
 
 /* Focus effect for buttons */
-nav a:focus {
+nav a:focus,nav form input[type="submit"]:focus {
   box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.5);
 }
 
@@ -76,5 +85,55 @@ nav a:focus {
   0% { box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.7); }
   70% { box-shadow: 0 0 0 10px rgba(13, 110, 253, 0); }
   100% { box-shadow: 0 0 0 0 rgba(13, 110, 253, 0); }
+}
+
+
+.graph-container {
+  display: flex;
+  justify-content: start; /* Align items to the start of the container */
+  align-items: flex-end;
+  height: 300px;
+  padding: 10px;
+  margin-top: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow-x: auto; /* Scroll horizontally if necessary */
+  position: relative;
+}
+
+.bar {
+  display: flex;
+  flex-direction: column-reverse; /* Stack text at the bottom */
+  align-items: flex-start; /* Align text to the left (start) */
+  margin: 0 5px; /* Spacing between bars */
+  background-color: #0d6efd;
+  color: black; /* Text color */
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+}
+.bar p {
+  writing-mode: tb-rl; /* Top to bottom, right to left writing mode */
+  transform: rotate(180deg); /* Rotate text to start from bottom */
+  margin-bottom: 10px; /* Space between text and bar top */
+  font-size: 100%; /* Adjust font size as needed */
+  white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
+  overflow: visible; /* Ensure text is not clipped */
+  height: auto; /* Let the height adjust to content */
+  display: flex; /* Use flexbox to align text */
+  align-items: flex-end; /* Align text to the bottom */
+}
+.bar div {
+  width: 20px; /* Bar width */
+  background-color: #0d6efd;
+  margin-top: auto; /* Push bar to bottom */
+  border-radius: 5px 5px 0 0;
+}
+.funFacts{
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px 0;
 }
 

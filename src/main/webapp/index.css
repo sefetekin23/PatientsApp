@@ -10,6 +10,23 @@ body, h2,h3,h4 nav, ul, li, a,form {
   list-style-type: none;
 }
 
+
+button {
+  list-style: none;
+  margin-bottom: 10px;
+  background: #0d6efd;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+button a {
+  color: #fff;
+  text-decoration: none;
+}
+button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
 /* Style the body with a light background and a sans-serif font */
 body {
   background-color: #f2f2f2;

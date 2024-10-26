@@ -2,13 +2,10 @@
 <%@ page import="java.util.*" %>
 <%@ page import="uk.ac.ucl.model.*" %>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <title>Patient Data</title>
   <link rel="stylesheet" href="index.css">
@@ -31,19 +28,16 @@
       </form>
     </li>
   </ul>
-
 </nav>
 
 <!-- Fun Facts Section -->
 <div>
   <h3>Fun Stats</h3>
   <section class="funFacts">
-
     <%
       String oldestPerson = (String) request.getAttribute("oldestPerson");
       String popularPlace = (String) request.getAttribute("popularPlace");
       String popularZip = (String) request.getAttribute("popularZip");
-
     %>
     <p><%=oldestPerson%></p>
     <p><%=popularPlace%></p>
@@ -54,22 +48,16 @@
   <section class="graphsContainer">
     <h3>Graphs</h3>
     <h4>Population Graph</h4>
-    <div class="graph-container">
+    <button onclick="sortGraph('populationGraph')">Sort</button>
+    <div id="populationGraph" class="graph-container">
       <%
         Map<String, Integer> cityPopulation = (Map<String, Integer>) request.getAttribute("cityPopulation");
         if (cityPopulation != null && !cityPopulation.isEmpty()) {
-          int numCities = cityPopulation.size();
-          int barWidth = Math.max(10, 8000 / numCities); // Dynamic width calculation
-          int maxPopulation = Collections.max(cityPopulation.values());
-
           for (Map.Entry<String, Integer> entry : cityPopulation.entrySet()) {
             String cityName = entry.getKey();
             Integer population = entry.getValue();
-            int heightPercentage = (int) ((population.doubleValue() / maxPopulation) * 100);
       %>
-      <div class="bar" style="height: <%= heightPercentage %>%; width: <%= barWidth %>px;"
-           onmouseover="showTooltip(event, '<%= population %>')"
-           onmouseout="hideTooltip()">
+      <div class="bar" data-value="<%= population %>" style="height: <%= (int) ((population.doubleValue() / Collections.max(cityPopulation.values())) * 100) %>%;" onmouseover="showTooltip(event, '<%= population %>')" onmouseout="hideTooltip()">
         <p><%= cityName %></p>
       </div>
       <%
@@ -77,23 +65,18 @@
         }
       %>
     </div>
+
     <h4>Age Graph</h4>
-    <div class="graph-container">
+    <button onclick="sortGraph('ageGraph')">Sort</button>
+    <div id="ageGraph" class="graph-container">
       <%
         Map<String, Integer> age = (Map<String, Integer>) request.getAttribute("age");
         if (age != null && !age.isEmpty()) {
-          int numCities = age.size();
-          int barWidth = Math.max(10, 8000 / numCities); // Dynamic width calculation
-          int maxAge = Collections.max(age.values());
-
           for (Map.Entry<String, Integer> entry : age.entrySet()) {
             String ageName = entry.getKey();
             Integer ageNumber = entry.getValue();
-            int heightPercentage = (int) ((ageNumber.doubleValue() / maxAge) * 100);
       %>
-      <div class="bar" style="height: <%= heightPercentage %>%; width: <%= barWidth %>px;"
-           onmouseover="showTooltip(event, '<%= ageNumber %>')"
-           onmouseout="hideTooltip()">
+      <div class="bar" data-value="<%= ageNumber %>" style="height: <%= (int) ((ageNumber.doubleValue() / Collections.max(age.values())) * 100) %>%;" onmouseover="showTooltip(event, '<%= ageNumber %>')" onmouseout="hideTooltip()">
         <p><%= ageName %></p>
       </div>
       <%
@@ -101,23 +84,18 @@
         }
       %>
     </div>
+
     <h4>Ethnicity Graph</h4>
-    <div class="graph-container">
+    <button onclick="sortGraph('ethnicityGraph')">Sort</button>
+    <div id="ethnicityGraph" class="graph-container">
       <%
         Map<String, Integer> ethnicity = (Map<String, Integer>) request.getAttribute("ethnicity");
         if (ethnicity != null && !ethnicity.isEmpty()) {
-          int numEthnicity = ethnicity.size();
-          int barWidth = Math.max(10, 8000 / numEthnicity); // Dynamic width calculation
-          int maxPeopleNumber = Collections.max(ethnicity.values());
-
           for (Map.Entry<String, Integer> entry : ethnicity.entrySet()) {
             String ethnicityName = entry.getKey();
             Integer ethnicityPeopleNumber = entry.getValue();
-            int heightPercentage = (int) ((ethnicityPeopleNumber.doubleValue() / maxPeopleNumber) * 100);
       %>
-      <div class="bar" style="height: <%= heightPercentage %>%; width: <%= barWidth %>px;"
-           onmouseover="showTooltip(event, '<%= ethnicityPeopleNumber %>')"
-           onmouseout="hideTooltip()">
+      <div class="bar" data-value="<%= ethnicityPeopleNumber %>" style="height: <%= (int) ((ethnicityPeopleNumber.doubleValue() / Collections.max(ethnicity.values())) * 100) %>%;" onmouseover="showTooltip(event, '<%= ethnicityPeopleNumber %>')" onmouseout="hideTooltip()">
         <p><%= ethnicityName %></p>
       </div>
       <%
@@ -127,22 +105,16 @@
     </div>
 
     <h4>Race Graph</h4>
-    <div class="graph-container">
+    <button onclick="sortGraph('raceGraph')">Sort</button>
+    <div id="raceGraph" class="graph-container">
       <%
         Map<String, Integer> race = (Map<String, Integer>) request.getAttribute("race");
         if (race != null && !race.isEmpty()) {
-          int numRace = race.size();
-          int barWidth = Math.max(10, 8000 / numRace); // Dynamic width calculation
-          int maxPeopleNumber = Collections.max(race.values());
-
           for (Map.Entry<String, Integer> entry : race.entrySet()) {
             String raceName = entry.getKey();
             Integer racePeopleNumber = entry.getValue();
-            int heightPercentage = (int) ((racePeopleNumber.doubleValue() / maxPeopleNumber) * 100);
       %>
-      <div class="bar" style="height: <%= heightPercentage %>%; width: <%= barWidth %>px;"
-           onmouseover="showTooltip(event, '<%= racePeopleNumber %>')"
-           onmouseout="hideTooltip()">
+      <div class="bar" data-value="<%= racePeopleNumber %>" style="height: <%= (int) ((racePeopleNumber.doubleValue() / Collections.max(race.values())) * 100) %>%;" onmouseover="showTooltip(event, '<%= racePeopleNumber %>')" onmouseout="hideTooltip()">
         <p><%= raceName %></p>
       </div>
       <%
@@ -150,12 +122,29 @@
         }
       %>
     </div>
-
   </section>
 </div>
+
 <div id="tooltip" style="position: absolute; display: none; padding: 4px; background: black; color: white; border-radius: 4px; font-size: 12px;"></div>
 
 <script>
+  function sortGraph(graphId) {
+    const graphContainer = document.getElementById(graphId);
+    const bars = Array.from(graphContainer.getElementsByClassName('bar'));
+
+    const currentOrder = graphContainer.getAttribute('data-order') || 'asc';
+    const newOrder = currentOrder === 'asc' ? 'desc' : 'asc';
+
+    bars.sort((a, b) => {
+      const aValue = parseInt(a.getAttribute('data-value'));
+      const bValue = parseInt(b.getAttribute('data-value'));
+      return newOrder === 'asc' ? aValue - bValue : bValue - aValue;
+    });
+
+    bars.forEach(bar => graphContainer.appendChild(bar));
+    graphContainer.setAttribute('data-order', newOrder);
+  }
+
   function showTooltip(e, text) {
     var tooltip = document.getElementById('tooltip');
     tooltip.style.display = 'block';
