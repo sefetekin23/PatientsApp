@@ -11,7 +11,7 @@ import org.apache.catalina.webresources.StandardRoot;
 public class Main {
 
   public static void main(String[] args) throws Exception {
-
+    //PatientApp
     String webappDirLocation = "src/main/webapp/";
     Tomcat tomcat = new Tomcat();
     tomcat.setPort(8080);
